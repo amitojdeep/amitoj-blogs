@@ -1,7 +1,8 @@
 ---
-layout: post
+layout: default
 ---
-This is the homepage of my blogs.
+# [](#header-2)About
+Home!!
 <ul>
   {% for post in site.posts %}
     <li>
