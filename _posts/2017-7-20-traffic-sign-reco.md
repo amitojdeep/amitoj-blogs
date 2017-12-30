@@ -89,6 +89,41 @@ for i in range(1,25):
 Let's see how the model trains,
 <img src="https://github.com/amitojdeep/amitoj-blogs/blob/master/assets/training-progress.png?raw=true" width="692" height="717" >
 
+The training goes on pretty much ideally and it stablizes to accuracy of **99.5%** on training set and about **99.9%** on test set. It took me around 3 hours to train one instance of the model.
+
+Now, I will generate predictions on the test set and upload them to GTSRB.
+
+{% highlight python %}
+model.load_weights('data/tr50A25.h5')
+
+path_test = 'data/test_full/'
+test_datagen = image.ImageDataGenerator()
+test_generator = test_datagen.flow_from_directory(
+        path_test,
+        target_size=(50, 50),
+        batch_size=16,
+        class_mode=None,
+        shuffle = False)
+pred = model.predict_generator(test_generator,test_generator.n)
+{& endhighlight %}
+
+This prediction will come out as confidence levels between 0 to 1 assigned to each class, where the class with highest number is the predicted class.
+Let's take an example,
+`[[  4.6133e-07   3.2123e-07   1.0266e-06   8.9983e-07   8.5720e-06   5.1291e-06   9.1533e-07
+    2.2246e-06   1.1797e-07   1.4529e-06   9.9455e-01   5.8414e-04   7.2590e-05   1.7934e-04
+    3.8776e-07   2.7640e-07   7.7135e-07   2.0421e-06   1.7570e-04   1.2043e-07   1.8051e-04
+    9.3152e-06   3.9429e-07   2.2013e-05   5.8755e-08   4.0380e-04   9.3221e-08   2.0156e-07
+    4.6435e-07   6.1648e-08   5.1891e-07   4.1398e-05   1.0640e-06   1.6840e-03   2.1620e-06
+    3.9760e-07   7.7743e-06   4.5777e-07   1.2642e-03   1.2395e-05   1.5695e-05   1.1570e-06
+    7.6219e-04]]`
+
+In this example *class 10* is predicted for the following, rather blurry image.
+<img src = "amitoj-blogs/assets/00101.png">
+Here is an actual image from class 10,
+<img src = "amitoj-blogs/assets/00013_00025.png">
+So, we can see that our model is working!
+
+
 
 
 
