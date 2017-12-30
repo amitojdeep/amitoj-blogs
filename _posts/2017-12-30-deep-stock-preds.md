@@ -6,7 +6,7 @@ title: Deep Stock Predictions
 
 Stock price prediction has always been a lucrative area in Finance because it deals with making actual money! Investment firms commonly use statistical and AI based models to predict prices of various assets and keep them as trade secrets. [Qplum](https://www.qplum.co/) is a startup that claims to be relying solely on AI and Data Science for automated investments. There are many research papers in this area as well, but no one reveals their *secret sauce*, but I would like to shed some light with my model.
 
-I tried my approach inspired by [Alex Honchar's](https://medium.com/@alexrachnog?source=post_header_lockup) expository work, during a project type course last semester. I used DJIA stock price data and RedditFinance(https://www.reddit.com/r/finance/) news for last 8 years. I built the model using the trusty `Keras` in a `Jupyter` notebook and trained on my GTX 960m laptop. You can jump straightaway to the [notebook](https://github.com/amitojdeep/deep-stock-preds/blob/master/Stock%20Prediction.ipynb) and start experimenting or read here for an overview. 
+I tried my approach inspired by [Alex Honchar's](https://medium.com/@alexrachnog?source=post_header_lockup) expository work, during a project type course last semester. I used DJIA stock price data and [RedditFinance](https://www.reddit.com/r/finance/) news for last 8 years. I built the model using the trusty `Keras` in a `Jupyter` notebook and trained on my GTX 960m laptop. You can jump straightaway to the [notebook](https://github.com/amitojdeep/deep-stock-preds/blob/master/Stock%20Prediction.ipynb) and start experimenting or read here for an overview. 
 
 ## Preprocessing
 
@@ -64,6 +64,13 @@ final_model = Model(inputs=[main_input, text_input],
 
 I have made this simple diagram using [draw.io](https://www.draw.io/) to make the model's design clearer.
  
-<img src="https://github.com/amitojdeep/deep-stock-preds/raw/master/Multimodal.jpg" width="300" align="middle">
+<img src="https://github.com/amitojdeep/deep-stock-preds/raw/master/Multimodal.jpg" width="400" align="middle">
+
+Another neat and easy way to visualize any keras model is to use `pyplot` and `plot_model` utility of Keras as described in *Visualize.ipynb*.
+
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/vis.JPG" width="400">
+
+
+
 
 
