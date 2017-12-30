@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Traffic Sign Reco
+title: Traffic Sign Recognition
 ---
 # [](#header-2)Traffic Sign Recognition- using ensembling and CNNs on GTSRB
 
