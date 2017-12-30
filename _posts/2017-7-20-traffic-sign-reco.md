@@ -2,12 +2,13 @@
 layout: default
 title: Traffic Sign Recognition
 ---
-# [](#header-2)Traffic Sign Recognition- using ensembling and CNNs on GTSRB
-
+# [](#header-2)Traffic Sign Recognition- using Ensemble of CNNs on GTSRB
+## Introduction
 This project has my first few baby steps in the field of Deep Learning. It will definitely be a good read for someone very new to this domain as I will demonstrate how by creating a very simple deep learning model I managed to achieve a very high accuracy on GTSRB.When I was almost done with the awesome [Practical Deep Learning For Coders](fast.ai) tutorials, I was looking for a basic but cool deep learning project. Then I came across [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news) which presents a rather old but interesting task. 
 
 Our aim is to design a *Traffic Sign Recognition System* using a dataset of 40000+ labelled images across 42 categories. This model will then be used to make predictions on around 12000 unlabelled test images and the results will be compared on GTSRB benchmark. [`Keras`](https://keras.io/) with [`Theano`](http://deeplearning.net/software/theano/) backend will be our tool of trade. I highly recommend `Keras` to beginners as well as those looking for quick implementation as it provides decent results without all the programming efforts involved in `TensorFlow`. I will be writing the code in `Jupyter` notebooks and recommend that you have [Anaconda](https://anaconda.org/) installed.
- 
+
+## Implementation
 Without any further delays, let's jump straight into the work. You can refer to the [project repo](https://github.com/amitojdeep/traffic-sign-reco) for all the code as well as a trained model for quick implementations.
 First of all we will separate the validation set from training set and convert the entire dataset to png images. You can write your own implementation or use the `road_sign_sep_val.ipynb` for separation and `road_sign_png_gen.ipynb` for conversion. I will retain the directory structures as in GTSRB dataset because we need it for image generators of `Keras`.
 I have used *data augmentation* to introduce random transformations to the training images.
@@ -73,6 +74,8 @@ def get_model_bn():
 
 The beauty of Keras is that you can understand the model architecture by just looking at a small piece of code. This model is a miniature of renowned `vgg16` model with additional [batch normalization](https://keras.io/layers/normalization/) layers to improve accuracy and reduce training time. Applying the actual `vgg` model will be an overkill considering it's larger image size and more depth. I designed another model with same number of convolutional and dense layers as `vgg16` and there was negligible gain in accuracy. Adam optimizer is used to control the learning rate.
 
+## Training
+
 Now, I will be training the model for 25 epochs. I will store the model weights after every epoch as a safegaurd against any system failure. You can also use *checkpoints* of Keras for the same.
 
 {% highlight python %}
@@ -123,11 +126,35 @@ In this example *class 10* is predicted for the following, rather blurry image.
 
 <img src = "https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/00101.png">
 
-Here is an actual image from class 10,
+Here is an actual image from *class 10*,
 
 <img src = "https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/00013_00025.png">
 
-So, we can see that the model is working reasonably well. 
+
+## Results
+
+So, you can see that the model is working reasonably well even for a blurry, low resolution image of a bit complexed traffic sign.
+You can see the results of my approach as the bottom most entry of the team *CSIO_Trainees* carrying the label *CNN with data augmentation*. **98.60%**, the number is rather impressive but quite below the state of the art that's 99.99%. 
+
+<img src = "https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/res.png">
+
+## Improvements - Ensembling
+
+Now, I trained 5 models with the same architecture that we have discussed above. Voila! The accuracy improve to **99.26%** percent, bringing it to top 10. But why did it go up? Each of the models is trained separately, with different data points occuring at different points of time during training and with separate augmentations applied by the generator. As a result, their errors are not expected to overlap, resulting in a better accuracy when we take the *most commonly predicted class*
+
+I tried a few more things and achieved an accuracy of **99.38%** using an ensemble of 8 models, 3 of them were trained on `80*80` images and 5 were the one's I used priorly. Outputs for a few more approaches used by me are also in the table. Ensembling is helpful, but not beyond 7-8 models.
+
+## Further tracks of work
+
+A few more approaches that can be tried to improve accuracy,
+
+* Pseudo Labelling: Labels can be generated for test images using initial predictions of the model. These can be used to further finetune the model weights. It is a form of *Semi Supervised Learning* and has given promising results in many fields.
+
+* Image Improvement: Images can be passed through filters that detect shapes and traffic signs can be separated by removing all the noise in surroundings. This must be done for both test and training images.
+
+* Transfer Learning: Weights of an already trained model like `vgg16` can be by finetuning the last few layer's for our specific task. This will save the training time and provide the benefits of extensively trained model. 
+
+Hope you liked my first blog post! Do share it among your peers, especially those who are on the fence of taking a dive into the beautiful world of deep learning.
 
 
 
