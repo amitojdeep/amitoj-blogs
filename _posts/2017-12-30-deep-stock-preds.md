@@ -114,9 +114,9 @@ The confusion matrix above shows the relationship between true and predicted pri
 ### Volatility Predictions
 
 The volatility is dealt as a normalized volatility, i.e a number between 0 to 1 where 1 corresponds to the data point with highest volatility. The metrics observed for volatility are:
-**MSE = 0.0017
-MAE = 0.0708
-MAPE = 3.1578**
+* **MSE = 0.0017**
+* **MAE = 0.0708**
+* **MAPE = 3.1578**
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/pred-vol.JPG" width="400">
 
