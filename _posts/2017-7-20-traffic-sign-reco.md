@@ -105,7 +105,7 @@ test_generator = test_datagen.flow_from_directory(
         class_mode=None,
         shuffle = False)
 pred = model.predict_generator(test_generator,test_generator.n)
-{& endhighlight %}
+{% endhighlight %}
 
 This prediction will come out as confidence levels between 0 to 1 assigned to each class, where the class with highest number is the predicted class.
 Let's take an example,
