@@ -10,7 +10,7 @@ Our aim is to design a *Traffic Sign Recognition System* using a dataset of 4000
  
 Without any further delays, let's jump straight into the work. You can refer to the [project repo](https://github.com/amitojdeep/traffic-sign-reco) for all the code as well as a trained model for quick implementations.
 First of all we will separate the validation set from training set and convert the entire dataset to png images. You can write your own implementation or use the `road_sign_sep_val.ipynb` for separation and `road_sign_png_gen.ipynb` for conversion. I will retain the directory structures as in GTSRB dataset because we need it for image generators of `Keras`.
-
+I have used *data augmentation* to introduce random transformations to the training images.
 Setting up the data generators,
 
 {% highlight python %}
@@ -36,6 +36,7 @@ validation_generator = test_datagen.flow_from_directory(
 {% endhighlight %}
 
 Note that I am using the image size `50*50` as just it seems to be sufficiently appropriate for complexity of traffic sign without making convolutional layers too heavy. Later I will demonstrate how using `80*80` image size increased training times tremendously without any significant gains in accuracy. I have used 48 batch size which was a decent number considering I had a GTX 960m with 4GB memory at my disposal. Any smaller and training will be too slow, any larger and you risk running out of memory. So decide according to your GPU, or let it be 48 only.
+
 
 Now let's jump to the model that we will design using Sequential API of `Keras`.
 
@@ -109,6 +110,7 @@ pred = model.predict_generator(test_generator,test_generator.n)
 
 This prediction will come out as confidence levels between 0 to 1 assigned to each class, where the class with highest number is the predicted class.
 Let's take an example,
+
 `[[  4.6133e-07   3.2123e-07   1.0266e-06   8.9983e-07   8.5720e-06   5.1291e-06   9.1533e-07
     2.2246e-06   1.1797e-07   1.4529e-06   9.9455e-01   5.8414e-04   7.2590e-05   1.7934e-04
     3.8776e-07   2.7640e-07   7.7135e-07   2.0421e-06   1.7570e-04   1.2043e-07   1.8051e-04
@@ -125,7 +127,9 @@ Here is an actual image from class 10,
 
 <img src = "https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/00013_00025.png">
 
-So, we can see that the model is working reasonably well.
+So, we can see that the model is working reasonably well. 
+
+
 
 
 
