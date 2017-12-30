@@ -66,11 +66,54 @@ I have made this simple diagram using [draw.io](https://www.draw.io/) to make th
  
 <img src="https://github.com/amitojdeep/deep-stock-preds/raw/master/Multimodal.jpg" width="400" align="middle">
 
+Inputs from stock price data and news vectors are fed into two separate LSTMs. These are flattened to same number of dimensions and are concatenated to form a single layer of 600 dimensions. This layer is further used as an input to two dense layers, one which predicts volatility and the other price movement. MSE is used to measure volatility loss because it is a regression problem whereas price movement loss is measured using binary cross entropy. Also the dense layers use leaky relu activation function and a dropout of 0.5 to prevent overfitting.
+
 Another neat and easy way to visualize any keras model is to use `pyplot` and `plot_model` utility of Keras as described in *Visualize.ipynb*.
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/vis.JPG" width="400">
 
+ts_input is the time series of stock market price and text_input is the news headline data of a
+given date. The stock price input goes to two LSTM units sequentially before getting flattened
+for concatenation. The news headlines are also passed through two sequential LSTM block and
+then the output is flattened. Concatenation unit joins together the activations from price and
+news LSTM units.
 
+The concatenated layer goes as input to one Dense layer followed by a Leaky ReLu activation layer and a dropout layer. This gives the predicted direction of movement of stock price movement. Here 0 indicates a prediction of downward price movement and 1 indicates a
+predicted upwards price movement.
+This concatenated layer is also fed to another dense layer with a Leaky ReLu activation which predicts volatility of the price. It must be noted that this volatility is a normalized continuous value where 0 means no volatility and 1 denotes the volatility of the date in the dataset with most volatility. For other days the volatility predicted is the fraction of maximum volatility.
+
+## Training
+
+The model is compiled using Mean Square Error loss for volatility and binary cross entropy loss for the predicted price movement direction. A snapshot of the training process is as shown below. The model was trained for 100 epochs and the weights with the least total loss were used for making predictions.
+
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/stock-train.JPG">
+
+Model loss measures the difference between true and predicted values of the price and volatility. The price movement is a 0-1 classification problem and hence binary cross entropy is used a measure of loss. Whereas volatility is a continuous measure and
+thus mean squared error is used as loss function. Initially both test and training loss are quite high as the model has random
+weights and they decrease rapidly as epochs go on. After around 20 epochs the test and training loss converge and settle indicating a well-fitted model.
+The results of minimizing combined loss are as shown below.
+
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/train-his.JPG">
+
+## Results
+
+Model achieves an accuracy of **74.93%** on this test set which is better than any technique that is based solely on price data. It is in line with sophisticated models that use only news data despite its simplistic design and treatment of stock market as a whole rather than taking individual stocks.
+
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/stock-conf.JPG">
+
+The confusion matrix above shows the relationship between true and predicted price movement for each of the 347 trading days of the test set. The model is slightly better at predicting positive price movements as compared to negative one’s but has a very balanced confusion matrix overall. This indicates the robustness and predictive power of the model.
+
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/pred-vol.JPG">
+
+Above is a plot comparing predicted and actual volatility for the test set. It is clear that the model is able to capture most of the dependencies and big jumps quite well giving a good estimate of market risk on any given day.
+
+## Conclusion and thoughts
+
+Multimodal and Multitask Deep Learning holds great potential for stock price predictions and has been shown to achieve better results than techniques relying solely on price data by supplementing it with news data.
+
+It is worth noting that the model uses news information for stock market as a whole instead of targeted news to make trading decisions for individual stocks which restricts its performance and at the same time makes the implementation simplistic. Also the high frequency price data and live news feed can be used to make a real time High Frequency Trading (HFT) system using the architecture of proposed model.
+
+To sum it up, this work provides an exposure into the application of Multimodal and Multitask learning to financial time series data. The positive results obtained validate the credibility of model for more complex tasks. In future work trading strategies using a target set of companies can be applied to observe the model’s performance for a real portfolio.
 
 
 
