@@ -87,7 +87,9 @@ for i in range(1,25):
 {% endhighlight %}
 
 Let's see how the model trains,
-<img src="https://github.com/amitojdeep/amitoj-blogs/blob/master/assets/training-progress.png?raw=true" width="830" height="861" >
+<img src="https://github.com/amitojdeep/amitoj-blogs/blob/master/assets/training-progress.png?raw=true" width="554" height="574" >
+
+
 
 
 
