@@ -93,17 +93,17 @@ thus mean squared error is used as loss function. Initially both test and traini
 weights and they decrease rapidly as epochs go on. After around 20 epochs the test and training loss converge and settle indicating a well-fitted model.
 The results of minimizing combined loss are as shown below.
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/train-his.JPG">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/train-his.JPG" width="400">
 
 ## Results
 
 Model achieves an accuracy of **74.93%** on this test set which is better than any technique that is based solely on price data. It is in line with sophisticated models that use only news data despite its simplistic design and treatment of stock market as a whole rather than taking individual stocks.
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/stock-conf.JPG">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/stock-conf.JPG" width="400">
 
 The confusion matrix above shows the relationship between true and predicted price movement for each of the 347 trading days of the test set. The model is slightly better at predicting positive price movements as compared to negative one’s but has a very balanced confusion matrix overall. This indicates the robustness and predictive power of the model.
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/pred-vol.JPG">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/pred-vol.JPG" width="400">
 
 Above is a plot comparing predicted and actual volatility for the test set. It is clear that the model is able to capture most of the dependencies and big jumps quite well giving a good estimate of market risk on any given day.
 
