@@ -13,7 +13,7 @@ I tried my approach inspired by [Alex Honchar's](https://medium.com/@alexrachnog
 I have downloaded the price data from Yahoo Finance as a CSV file and it is ready for use. The scraped news headings are converted to embeddings using [Google's word2vec](https://www.tensorflow.org/tutorials/word2vec) model. It is a Vector Space Model
 (VSM) that maps similar words to nearby points. So, similar words are represented by numbers that are closer to each other and this provides a semantic value to the representation.The process of embedding generation can be diagramatically understood as:
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/emb.JPG" width="400" align ="center">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/emb.JPG" width="400" align ="middle">
 
 Here I have used word2vec model with 100 dimensions to keep the things faster and lighter. One may use a  bigger model with 300 dimensions, hoping to capture context even better.
 
@@ -64,6 +64,6 @@ final_model = Model(inputs=[main_input, text_input],
 
 I have made this simple diagram using [draw.io](https://www.draw.io/) to make the model's design clearer.
  
-<img src="https://github.com/amitojdeep/deep-stock-preds/raw/master/Multimodal.jpg" width="300" align="center">
+<img src="https://github.com/amitojdeep/deep-stock-preds/raw/master/Multimodal.jpg" width="300" align="middle">
 
 
