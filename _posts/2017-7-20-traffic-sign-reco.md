@@ -76,7 +76,7 @@ The beauty of Keras is that you can understand the model architecture by just lo
 
 ## Training
 
-Now, I will be training the model for 25 epochs. I will store the model weights after every epoch as a safegaurd against any system failure. You can also use *checkpoints* of Keras for the same.
+Now, I will be training the model for 25 epochs. I will store the model weights after every epoch as a safeguard against any system failure. You can also use *checkpoints* of Keras for the same.
 
 {% highlight python %}
 modelA = get_model_bn()
@@ -93,7 +93,7 @@ for i in range(1,25):
 Let's see how the model trains,
 <img src="https://github.com/amitojdeep/amitoj-blogs/blob/master/assets/training-progress.png?raw=true" width="692" height="717" >
 
-The training goes on pretty much ideally and it stablizes to accuracy of **99.5%** on training set and about **99.9%** on test set. It took me around 3 hours to train one instance of the model.
+The training goes on pretty much ideally and it stabilizes to accuracy of **99.5%** on training set and about **99.9%** on test set. It took me around 3 hours to train one instance of the model.
 
 Now, I will generate predictions on the test set and upload them to GTSRB.
 
