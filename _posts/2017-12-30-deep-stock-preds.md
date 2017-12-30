@@ -27,7 +27,7 @@ X_train # Time series data
 X_train_text # word2vec decoded text data
 Y_train # Labels for voaltility
 Y_train2 # Labels for classification (movement direction)
-{% endhighlight}
+{% endhighlight %}
 
 ### Model Design
 Next, the model is defined using `Functional API` of Keras.
@@ -58,7 +58,7 @@ x2 = Dense(1, activation = 'sigmoid', name = 'class')(x2)
 
 final_model = Model(inputs=[main_input, text_input], 
               outputs=[x1, x2])
-{% endhighlight}
+{% endhighlight %}
 
 ## Visualisation
 
