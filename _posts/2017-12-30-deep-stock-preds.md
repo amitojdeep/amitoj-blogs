@@ -84,9 +84,16 @@ This concatenated layer is also fed to another dense layer with a Leaky ReLu act
 
 ## Training
 
-The model is compiled using Mean Square Error loss for volatility and binary cross entropy loss for the predicted price movement direction. A snapshot of the training process is as shown below. The model was trained for 100 epochs and the weights with the least total loss were used for making predictions.
+The model is compiled using Mean Square Error loss for volatility and binary cross entropy loss for the predicted price movement direction. A snippet of the training process is as shown below. The model was trained for 100 epochs with batch size of 256 and the weights with the least total loss were used for making predictions.
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/stock-train.JPG">
+{% highlight python %}
+history = final_model.fit([X_train, X_train_text], [Y_train, Y_train2],
+		nb_epoch = 100, 
+		batch_size = 256, 
+		verbose=1, 
+		validation_data=([X_test, X_test_text], [Y_test, Y_test2]), 
+		callbacks=[reduce_lr, checkpointer], shuffle=True)
+{% endhighlight %}   
 
 Model loss measures the difference between true and predicted values of the price and volatility. The price movement is a 0-1 classification problem and hence binary cross entropy is used a measure of loss. Whereas volatility is a continuous measure and
 thus mean squared error is used as loss function. Initially both test and training loss are quite high as the model has random
