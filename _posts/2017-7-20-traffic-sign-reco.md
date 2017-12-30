@@ -2,7 +2,7 @@
 layout: default
 title: Traffic Sign Recognition
 ---
-# [](#header-2)Traffic Sign Recognition- using Ensemble of CNNs on GTSRB
+# [](#header-2)Traffic Sign Recognition- Ensemble of CNNs
 ## Introduction
 This project has my first few baby steps in the field of Deep Learning. It will definitely be a good read for someone very new to this domain as I will demonstrate how by creating a very simple deep learning model I managed to achieve a very high accuracy on GTSRB.When I was almost done with the awesome [Practical Deep Learning For Coders](fast.ai) tutorials, I was looking for a basic but cool deep learning project. Then I came across [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news) which presents a rather old but interesting task. 
 
