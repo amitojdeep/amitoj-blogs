@@ -70,7 +70,26 @@ def get_model_bn():
     return model
 {% endhighlight %}
 
-The beauty of Keras is that you can understand the model architecture by just looking at a small piece of code. This model is a miniature of renowned `vgg16` model with additional [batch normalization](https://keras.io/layers/normalization/) layers to improve accuracy and reduce training time. Applying the actual `vgg` model will be an overkill considering it's larger image size and more depth. I designed another model with same number of convolutional layers as `vgg16` and there was negligible gain in accuracy.
+The beauty of Keras is that you can understand the model architecture by just looking at a small piece of code. This model is a miniature of renowned `vgg16` model with additional [batch normalization](https://keras.io/layers/normalization/) layers to improve accuracy and reduce training time. Applying the actual `vgg` model will be an overkill considering it's larger image size and more depth. I designed another model with same number of convolutional and dense layers as `vgg16` and there was negligible gain in accuracy. Adam optimizer is used to control the learning rate.
+
+Now, I will be training the model for 25 epochs. I will store the model weights after every epoch as a safegaurd against any system failure. You can also use *checkpoints* of Keras for the same.
+
+{% highlight python %}
+modelA = get_model_bn()
+for i in range(1,25):
+    modelA.fit_generator(
+        train_generator,
+        samples_per_epoch=train_generator.n,
+        nb_epoch=1,
+        validation_data=validation_generator,
+        nb_val_samples=validation_generator.n)
+    modelA.save_weights("data/tr50A" + str(i) + ".h5")
+{% endhighlight %}
+
+Let's see how the model trains,
+![Training]({{"/assets/training-progress.png"}})
+
+
 
 
 
