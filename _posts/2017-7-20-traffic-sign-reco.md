@@ -118,9 +118,9 @@ Let's take an example,
     7.6219e-04]]`
 
 In this example *class 10* is predicted for the following, rather blurry image.
-<img src = "amitoj-blogs/assets/00101.png">
+<img src = "/assets/00101.png">
 Here is an actual image from class 10,
-<img src = "amitoj-blogs/assets/00013_00025.png">
+<img src = "/assets/00013_00025.png">
 So, we can see that our model is working!
 
 
