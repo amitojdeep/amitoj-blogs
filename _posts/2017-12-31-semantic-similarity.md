@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Semantic Similarity
+title: Siamese LSTM for Semantic Similarity Analysis
 ---
 # [](#header-2)Siamese LSTM for Semantic Similarity Analysis
 
