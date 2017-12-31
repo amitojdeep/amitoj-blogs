@@ -70,7 +70,7 @@ The embedding generation can be understood with the example below:
 
 The embeddings of each word in a given sentence is the input that goes to the model. Embedding list is created for each query pair and it is padded with zeroes to accommodate the sentence with longest representation and make length of all embedding lists equal. I have pickled the embeddings separately and loaded them for final deployment directly as geneerating embeddings each time is very slow.
 
-##Siamese LSTM - A variant of Manhattan LSTM
+## Siamese LSTM - A variant of Manhattan LSTM
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-diag.png" width="400">
 
@@ -140,7 +140,7 @@ Validation accuracy which indicates the performance of model on unlabelled data 
 
 Training the model for a few more epochs will probably give some improvements in accuracy as the accuracy is still rising after 10 epochs instead of levelling off.
 
-###Confusion Matrix
+### Confusion Matrix
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/Figure_2.png" width="300">
 
