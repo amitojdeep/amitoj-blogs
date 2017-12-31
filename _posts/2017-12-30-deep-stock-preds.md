@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deep Stock Predictions
+title: Multimodal & Multitask Deep Learning for Predicting Stock Prices
 ---
 # [](#header-2) Multimodal & Multitask Deep Learning- Predicting Stock Prices
 
