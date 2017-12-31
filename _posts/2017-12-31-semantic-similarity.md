@@ -124,7 +124,7 @@ The model has two visible input layers, one for each side of the MaLSTM. These a
 
 The figure below shows Model Loss (MSE) and Accuracy on y-axis as a function of number of epochs on the x-axis. 
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-his.png" width="300">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-his.png" width="450">
 
 ## Results
 
@@ -142,7 +142,7 @@ Training the model for a few more epochs will probably give some improvements in
 
 ### Confusion Matrix
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/Figure_2.png" width="300">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/Figure_2.png" width="450">
 
 Confusion matrix plotted above shows the assignment of classes to sample pairs of questions by the model. Most of the predictions are concentrated in the diagonal classes indicating a good classification. Non duplicate questions is clearly the dominant class in the model.
 
