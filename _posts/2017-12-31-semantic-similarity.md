@@ -78,7 +78,7 @@ Manhattan LSTM models has two networks LSTMleft and LSTMright which process one 
 
 The model uses an LSTM which reads word-vector representations of two queries and represents it in final hidden state. Similarity between the is used generated from the equation below:
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-eq.png" width="300">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-eq.png" width="500">
 
 This equation can be written in the form of a python function which I will be using as a lambda in `Keras` layer directly. 
 
