@@ -66,19 +66,19 @@ Google’s word2vec has been used to turn words to embeddings. It is a Vector Sp
 
 The embedding generation can be understood with the example below:
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-emb.png">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-emb.png" width="400">
 
 The embeddings of each word in a given sentence is the input that goes to the model. Embedding list is created for each query pair and it is padded with zeroes to accommodate the sentence with longest representation and make length of all embedding lists equal. I have pickled the embeddings separately and loaded them for final deployment directly as geneerating embeddings each time is very slow.
 
 ##Siamese LSTM - A variant of Manhattan LSTM
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-diag.png">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-diag.png" width="400">
 
 Manhattan LSTM models has two networks LSTMleft and LSTMright which process one of the sentences in a given pair independently. Siamese LSTM, a version of Manhattan LSTM where both  LSTMleft and LSTMright  have same tied weights such that  LSTMleft = LSTMright. Such a model is useful for tasks like duplicate query detection and query ranking. Here, duplicate detection task is performed to find if two queries and duplicates or not. Similar model can be trained for query ranking using hit data for a given query and it’s matching results as a proxy for similarity.
 
 The model uses an LSTM which reads word-vector representations of two queries and represents it in final hidden state. Similarity between the is used generated from the equation below:
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-eq.png">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-eq.png" width="300">
 
 This equation can be written in the form of a python function which I will be using as a lambda in `Keras` layer directly. 
 
@@ -124,7 +124,7 @@ The model has two visible input layers, one for each side of the MaLSTM. These a
 
 The figure below shows Model Loss (MSE) and Accuracy on y-axis as a function of number of epochs on the x-axis. 
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-his.png">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-his.png" width="300">
 
 ##Results
 
@@ -142,7 +142,7 @@ Training the model for a few more epochs will probably give some improvements in
 
 ###Confusion Matrix
 
-<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/Figure_2.png">
+<img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/Figure_2.png" width="300">
 
 Confusion matrix plotted above shows the assignment of classes to sample pairs of questions by the model. Most of the predictions are concentrated in the diagonal classes indicating a good classification. Non duplicate questions is clearly the dominant class in the model.
 
