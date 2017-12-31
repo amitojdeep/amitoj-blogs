@@ -10,11 +10,11 @@ The following flowchart describes the system that I have built. I will describe 
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-sys.png">
 
-##Dataset 
+## Dataset 
 
 Quora Question Pairs Dataset which is publically available on Kaggle has been used to train the Siamese LSTM Model. It has 400,000 samples of potential question duplicate pairs. Each sample has two questions along with ground truth about their similarity(0 - dissimilar, 1- similar). These are split into test and training dataset. Further 40,000 pairs have been separated from training dataset for validation.
 
-##Preprocessing
+## Preprocessing
 
 Raw text needs to be converted to list of word indices. A helper function takes a string as input and outputs a list of words from it after some preprocessing like accommodating specific signs as described in this piece of code.
 
@@ -60,7 +60,7 @@ def text_to_word_list(text):
     return text
 {% endhighlight%}
 
-##Embeddings
+## Embeddings
 
 Google’s word2vec has been used to turn words to embeddings. It is a Vector Space Model (VSM) that maps similar words to nearby points. So, similar words are represented by numbers that are closer to each other and this provides the representation a semantic value to it. This is more powerful than representing words as unique ids with no relation between words with closer ids as helps in training models that leverage the semantics of words to create context. Vocabulary dictionary stores word to index mapping and Inverse Vocabulary dictionary stores index to word mapping.
 
@@ -126,15 +126,15 @@ The figure below shows Model Loss (MSE) and Accuracy on y-axis as a function of 
 
 <img src="https://github.com/amitojdeep/amitoj-blogs/raw/master/assets/sem-his.png" width="300">
 
-##Results
+## Results
 
-###Mean Squared Error (MSE)
+### Mean Squared Error (MSE)
 
 The mean squared error is the same as loss measure of the model. Here, the lower two plots are for MSE. The best value of training MSE obtained is **0.1395** and it is found to be decreasing at a decreasing rate throughout the training process of the model. Whereas the validation MSE (which is equivalent to test MSE) is found to be **0.1426** at the end of ten epochs and follows same behavior as discussed above.
 
 It is worth noting that  MSE for training set as initially worse off than that for validation set as the model is under fitted then. It approaches Validation MSE and then crosses it slightly indicating that the model is performing equally well on training and validation. Our model seems to be well-fitted as these values are very close.
 
-###Accuracy 
+### Accuracy 
 
 Validation accuracy which indicates the performance of model on unlabelled data is found to be **80.35%** at the end of 10 epochs. It increases at a decreasing rate as the model learns weights better after each epochs. Training accuracy reaches **80.88%** and follows a similar trend. There is not much disparity between these two indicating a well fitted model.
 
@@ -146,7 +146,7 @@ Training the model for a few more epochs will probably give some improvements in
 
 Confusion matrix plotted above shows the assignment of classes to sample pairs of questions by the model. Most of the predictions are concentrated in the diagonal classes indicating a good classification. Non duplicate questions is clearly the dominant class in the model.
 
-##Conclusion and Future Work
+## Conclusion and Future Work
 
 Semantic Similarity classifier based on Siamese LSTM model has given sufficiently good results on the Quora Question Pairs Dataset giving an accuracy of 80.35% indicating its suitability for the task. This model can be trained on task specific datasets for application in various domains as a part of future research. Also hyperparameter optimization & changing optimizer can be done. Upcoming techniques like Reinforcement Learning, Transfer Learning,  Augmentation using synonyms can be accommodated in the model for studying their impact on the model.
 
