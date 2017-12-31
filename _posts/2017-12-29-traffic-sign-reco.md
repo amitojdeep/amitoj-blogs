@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Traffic Sign Recognition
+title: Ensemble of CNNs for Traffic Sign Recognition
 ---
 # [](#header-2)Traffic Sign Recognition- Ensemble of CNNs
 
